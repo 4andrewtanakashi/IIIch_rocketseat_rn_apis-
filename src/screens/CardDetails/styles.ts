@@ -66,5 +66,18 @@ export const About = styled.Text`
   font-size: ${RFValue(15)}px;
   text-align: justify;
   margin-top: 23px;
+  line-height: ${RFValue(25)}px;
 `
 
+export const Accessories = styled.View`
+  width: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 26%;
+  flex: 1;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  margin-right: -8px;
+`
