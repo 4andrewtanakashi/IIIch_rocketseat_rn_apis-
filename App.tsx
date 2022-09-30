@@ -16,6 +16,7 @@ import {
 
 import { Home } from './src/screens/Home'
 import { CardDetails } from './src/screens/CardDetails'
+import { Scheduling } from './src/screens/Scheduling'
 import theme from './src/styles/theme'
 
 export default function App() {
@@ -33,7 +34,7 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme} >
-      <CardDetails />
+      <Scheduling />
     </ThemeProvider>
   );
 }
