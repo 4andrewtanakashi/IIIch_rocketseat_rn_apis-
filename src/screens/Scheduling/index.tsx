@@ -13,6 +13,7 @@ import {
   Footer
 } from './styles'
 import { BackButton } from '../../components/BackButton'
+import { Calendar } from '../../components/Calendar'
 
 import ArrowSvg from '../../assets/arrow.svg'
 import { StatusBar } from 'react-native'
@@ -63,7 +64,7 @@ export function Scheduling () {
         </Header>
 
         <Content>
-
+          <Calendar />
         </Content>
 
         <Footer>
