@@ -77,7 +77,12 @@ export const Accessories = styled.View`
   justify-content: space-between;
   min-width: 26%;
   flex: 1;
-  margin-top: 8px;
+  margin-right: 8px;
   margin-bottom: 8px;
   margin-right: -8px;
+`
+export const Footer = styled.View`
+  width: 100%;
+  background-color: ${ ({theme}) => theme.colors.background_primary };
+  padding: 24px 24px ${getStatusBarHeight() + 24}px;
 `
