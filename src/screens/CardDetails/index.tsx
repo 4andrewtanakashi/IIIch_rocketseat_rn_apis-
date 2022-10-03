@@ -1,4 +1,5 @@
 import React from 'react'
+import { StatusBar } from 'react-native'
 import { useNavigation, useRoute } from '@react-navigation/native'
 
 import {
@@ -45,6 +46,11 @@ export function CardDetails () {
 
   return (
     <Container>
+      <StatusBar 
+        barStyle={'dark-content'}
+        translucent
+        backgroundColor={'transparent'}
+      /> 
       <Header>
         <BackButton onPress={handleBack}/>
       </Header>
