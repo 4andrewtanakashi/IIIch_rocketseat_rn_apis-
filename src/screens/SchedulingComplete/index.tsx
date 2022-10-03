@@ -1,5 +1,6 @@
 import React from 'react'
-import { useWindowDimensions } from 'react-native'
+import { StatusBar, useWindowDimensions } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
 
 import {
   Container,
@@ -15,23 +16,39 @@ import { ConfirmButton } from '../../components/ConfirmButton'
 
 export function SchedulingComplete () {
   const { width } = useWindowDimensions()
+  const navigation = useNavigation()
+
+  function handleHome () {
+    navigation.navigate('Home')
+  }
+
   return (
-    <Container>
-      <LogoSvg width={width} />
+    <>
+        <StatusBar
+          barStyle='light-content'
+          backgroundColor={'transparent'}
+          translucent
+        />
+      <Container>
+        <LogoSvg width={width} />
 
-      <Content>
-        <DoneSvg width={80} height={80} />
-        <Title>Carro alugado!</Title>
-        <Message>
-          Agora você só precisa ir {'\n'}
-          até a concessionária da RENTX {'\n'}
-          pegar o seu automóvel.
-        </Message>
+        <Content>
+          <DoneSvg width={80} height={80} />
+          <Title>Carro alugado!</Title>
+          <Message>
+            Agora você só precisa ir {'\n'}
+            até a concessionária da RENTX {'\n'}
+            pegar o seu automóvel.
+          </Message>
 
-        <Footer>
-          <ConfirmButton title={'OK'}/>
-        </Footer>
-      </Content>
-    </Container>
+          <Footer>
+            <ConfirmButton 
+              title={'OK'}
+              onPress={handleHome}
+            />
+          </Footer>
+        </Content>
+      </Container>
+    </>
   )
 }

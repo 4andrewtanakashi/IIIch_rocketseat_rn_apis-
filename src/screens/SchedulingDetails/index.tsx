@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigation } from '@react-navigation/native'
 import { RFValue } from 'react-native-responsive-fontsize'
 import { Feather } from '@expo/vector-icons'
 
@@ -23,6 +24,11 @@ import PeopleSvg from '../../assets/people.svg'
 
 export function SchedulingDetails () {
   const theme = useTheme()
+  const navigation = useNavigation()
+
+  function handleSchedulingComplete () {
+    navigation.navigate('SchedulingComplete')
+  }
 
   return (
     <Container>
@@ -94,7 +100,11 @@ export function SchedulingDetails () {
 
       </Content>
       <Footer>
-          <Button title={'Confirmar'}/>
+          <Button
+            title={'Alugar agora'}
+            color={theme.colors.success}
+            onPress={handleSchedulingComplete}
+          />
       </Footer>
     </Container>
   )

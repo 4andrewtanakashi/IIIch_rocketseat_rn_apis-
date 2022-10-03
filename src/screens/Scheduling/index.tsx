@@ -1,5 +1,6 @@
 import React from 'react'
 import { useTheme } from 'styled-components'
+import { useNavigation } from '@react-navigation/native'
 
 import {
   Container,
@@ -21,6 +22,11 @@ import { Button } from '../../components/Button'
 
 export function Scheduling () {
   const theme = useTheme()
+  const navigation = useNavigation()
+
+  function handleSchedulingDetails () {
+    navigation.navigate('SchedulingDetails')
+  }
 
   return (
     <>
@@ -70,6 +76,7 @@ export function Scheduling () {
         <Footer>
           <Button
               title={'Confirmar'}
+              onPress={handleSchedulingDetails}
             />
         </Footer>
       </Container>

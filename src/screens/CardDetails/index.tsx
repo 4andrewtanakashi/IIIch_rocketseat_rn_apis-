@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigation } from '@react-navigation/native'
 
 import {
   Container,
@@ -29,6 +30,13 @@ import ExchangeSvg from '../../assets/exchange.svg'
 import PeopleSvg from '../../assets/people.svg'
 
 export function CardDetails () {
+
+  const navigation = useNavigation()
+
+  function handleConfirmRental () {
+    navigation.navigate('Scheduling')
+  }
+
   return (
     <Container>
       <Header>
@@ -72,7 +80,7 @@ export function CardDetails () {
 
       </Content>
       <Footer>
-          <Button title={'Confirmar'}/>
+          <Button title={'Escolher período do aluguel'} onPress={handleConfirmRental}/>
       </Footer>
     </Container>
   )
