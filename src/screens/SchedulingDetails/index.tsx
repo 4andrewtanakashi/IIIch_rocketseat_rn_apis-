@@ -1,5 +1,5 @@
 import React from 'react'
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import { RFValue } from 'react-native-responsive-fontsize'
 import { Feather } from '@expo/vector-icons'
 
@@ -25,6 +25,7 @@ import PeopleSvg from '../../assets/people.svg'
 export function SchedulingDetails () {
   const theme = useTheme()
   const navigation = useNavigation()
+  const route = useRoute()
 
   function handleSchedulingComplete () {
     navigation.navigate('SchedulingComplete')

@@ -22,13 +22,8 @@ import { BackButton } from '../../components/BackButton'
 import { ImageSlider } from '../../components/ImageSlider/'
 import { Accessory } from '../../components/Accessory'
 import { Button } from '../../components/Button'
-import { CarDTO } from '../../dtos/CarDTO'
-
 import { getAccessoryIcon } from '../../utils/getAccessoryIcon'
-
-interface Params {
-  car: CarDTO
-}
+import { Params } from '../../utils/interfaces'
 
 export function CardDetails () {
   const navigation = useNavigation()
@@ -37,7 +32,7 @@ export function CardDetails () {
   const { car } = route.params as Params
 
   function handleConfirmRental () {
-    navigation.navigate('Scheduling')
+    navigation.navigate('Scheduling', { car })
   }
 
   function handleBack () {
