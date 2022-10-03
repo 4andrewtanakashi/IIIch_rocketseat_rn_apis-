@@ -23,12 +23,7 @@ import { Accessory } from '../../components/Accessory'
 import { Button } from '../../components/Button'
 import { CarDTO } from '../../dtos/CarDTO'
 
-import SpeedSvg from '../../assets/speed.svg'
-import AccelerationSvg from '../../assets/acceleration.svg'
-import ForceSvg from '../../assets/force.svg'
-import GasolineSvg from '../../assets/gasoline.svg'
-import ExchangeSvg from '../../assets/exchange.svg'
-import PeopleSvg from '../../assets/people.svg'
+import { getAccessoryIcon } from '../../utils/getAccessoryIcon'
 
 interface Params {
   car: CarDTO
@@ -79,7 +74,7 @@ export function CardDetails () {
               <Accessory
                 key={accesory.type}
                 name={accesory.name}
-                icon={SpeedSvg}
+                icon={getAccessoryIcon(accesory.type)}
               />
             ) )
           }
