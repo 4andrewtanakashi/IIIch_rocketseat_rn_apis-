@@ -44,10 +44,13 @@ export function SchedulingDetails () {
     const schedulesByCar = await api.get(`/schedules_bycars/${car.id}`)
 
     await api.post('schedules_byuser', {
-      user_id: 4,
-      car
+      user_id: 1,
+      car,
+      startDate: format(getPlataformDate(new Date(parseISO(dates[0]))), 'dd/MM/yyyy' ),
+      endDate: format(getPlataformDate( new Date(parseISO(dates[dates.length - 1]))), 'dd/MM/yyyy' )
     } )
 
+    console.log(schedulesByCar)
     const unavailable_dates = [
       ...schedulesByCar.data.unavailable_dates,
       ...dates

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { StatusBar, FlatList } from 'react-native'
-import { useNavigation, useRoute } from '@react-navigation/native'
+import { useNavigation } from '@react-navigation/native'
+import { AntDesign } from '@expo/vector-icons'
 
 import { useTheme } from 'styled-components'
 import  { CarDTO } from '../../dtos/CarDTO'
@@ -15,7 +16,12 @@ import {
   Content,
   Appointments,
   AppointmentsTitle,
-  AppointmentsQuality
+  AppointmentsQuality,
+  CarWrapper,
+  CarFooter,
+  CarFooterTitle,
+  CarFooterPeriod,
+  CarFooterDate,
 } from './styles'
 
 interface CarProps {
@@ -30,7 +36,6 @@ export function MyCars () {
 
   const theme = useTheme()
   const navigation = useNavigation()
-  const route = useRoute()
 
   useEffect( () => {
     async function fetchCars () {
@@ -82,7 +87,22 @@ export function MyCars () {
           keyExtractor={item => item.id}
           showsVerticalScrollIndicator={false}
           renderItem={ ({item}) => (
-            <Car data={item.car} />
+            <CarWrapper>
+              <Car data={item.car} />
+              <CarFooter>
+                <CarFooterTitle>Período</CarFooterTitle>
+                <CarFooterPeriod>
+                  <CarFooterDate>18/06/2021</CarFooterDate>
+                  <AntDesign
+                    name={'arrowright'}
+                    size={20}
+                    color={theme.colors.title}
+                    style={ { marginHorizontal: 10} }
+                  />
+                  <CarFooterDate>20/06/2021</CarFooterDate>
+                </CarFooterPeriod>
+              </CarFooter>
+            </CarWrapper>
           ) }
         />
       </Content>
