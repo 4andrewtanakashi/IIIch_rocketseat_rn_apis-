@@ -8,7 +8,8 @@ import { Home } from '../../src/screens/Home'
 import { CardDetails } from '../../src/screens/CardDetails'
 import { Scheduling } from '../../src/screens/Scheduling'
 import { SchedulingDetails } from '../../src/screens/SchedulingDetails'
-import { SchedulingComplete } from '../../src/screens/SchedulingComplete/index'
+import { SchedulingComplete } from '../../src/screens/SchedulingComplete/'
+import { MyCars } from '../screens/MyCars/'
 
 export function StackRoutes () {
   return (
@@ -32,6 +33,10 @@ export function StackRoutes () {
       <Screen 
         name={'SchedulingComplete'}
         component={SchedulingComplete}
+      />
+      <Screen 
+        name={'MyCars'}
+        component={MyCars}
       />
     </Navigator>
   )
