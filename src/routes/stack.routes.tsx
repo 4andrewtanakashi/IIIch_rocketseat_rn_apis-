@@ -9,11 +9,16 @@ import { CardDetails } from '../../src/screens/CardDetails'
 import { Scheduling } from '../../src/screens/Scheduling'
 import { SchedulingDetails } from '../../src/screens/SchedulingDetails'
 import { SchedulingComplete } from '../../src/screens/SchedulingComplete/'
-import { MyCars } from '../screens/MyCars/'
+import { MyCars } from '../screens/MyCars'
+import { Splash } from '../screens/Splash'
 
 export function StackRoutes () {
   return (
-    <Navigator headerMode={'none'}>
+    <Navigator headerMode={'none'} initialRouteName={'Splash'}>
+      <Screen 
+        name={'Splash'}
+        component={Splash}
+      />
       <Screen 
         name={'Home'}
         component={Home}
