@@ -124,12 +124,14 @@ export function Scheduling () {
             onDayPress={handleChangeDate}
           />
         </Content>
-
+        {console.log('!!rentalPeriod.startFormatted: ', !!rentalPeriod.startFormatted, 
+          "rentalPeriod.startFormatted: ", rentalPeriod.startFormatted
+        )}
         <Footer>
           <Button
               title={'Confirmar'}
               onPress={handleSchedulingDetails}
-              enabled={!!rentalPeriod.endFormatted}
+              enabled={!!rentalPeriod.startFormatted}
             />
         </Footer>
       </Container>
