@@ -23,14 +23,14 @@ export const ImageIndex = styled.View<ImageIndexProps>`
   border-radius: 3px;
 `
 
-export const CarImage = styled.Image`
+export const CarImageWrapper = styled.View`
   width: ${Dimensions.get('window').width}px;
   height: 132px;
   justify-content: center;
   align-items: center;
 `
 
-export const CarImageWrapper = styled.View`
+export const CarImage = styled.Image`
   width: 280px;
   height: 132px;
 `
