@@ -43,6 +43,11 @@ export function SchedulingDetails () {
   async function handleSchedulingComplete () {
     const schedulesByCar = await api.get(`/schedules_bycars/${car.id}`)
 
+    await api.post('schedules_byuser', {
+      user_id: 4,
+      car
+    } )
+
     const unavailable_dates = [
       ...schedulesByCar.data.unavailable_dates,
       ...dates
