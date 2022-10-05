@@ -1,5 +1,13 @@
 import React, { useEffect } from 'react'
-import Animated, { Extrapolate, interpolate, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated'
+import { useNavigation } from '@react-navigation/native'
+import Animated, {
+  Extrapolate,
+  interpolate,
+  runOnJS,
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming
+} from 'react-native-reanimated'
 
 import { Container } from './styles'
 import BrandSvg from '../../assets/brand.svg'
@@ -7,7 +15,8 @@ import LogoSvg from '../../assets/logo.svg'
 
 export function Splash () {
   const splashAnimation = useSharedValue(0)
-  
+  const navigation = useNavigation()
+
   const brandStyle = useAnimatedStyle( () => {
     return {
       opacity: interpolate(splashAnimation.value, [0, 25, 50], [1, .3, 0]),
@@ -38,10 +47,18 @@ export function Splash () {
     }
   } )
 
+  function startApp () {
+    navigation.navigate('Home')
+  }
+
   useEffect( () => {
     splashAnimation.value = withTiming(
       50,
-      { duration: 1500}
+      { duration: 1500},
+      () => {
+        'worklet'
+        runOnJS(startApp)()
+      }
     )
   } )
 
