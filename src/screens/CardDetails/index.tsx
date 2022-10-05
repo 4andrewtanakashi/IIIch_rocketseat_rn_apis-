@@ -1,6 +1,13 @@
 import React from 'react'
 import { StatusBar } from 'react-native'
 import { useNavigation, useRoute } from '@react-navigation/native'
+import Animated, {
+  Extrapolate,
+  interpolate,
+  useAnimatedScrollHandler,
+  useSharedValue,
+  useAnimatedStyle
+} from 'react-native-reanimated'
 
 import {
   Container,
@@ -24,10 +31,27 @@ import { Accessory } from '../../components/Accessory'
 import { Button } from '../../components/Button'
 import { getAccessoryIcon } from '../../utils/getAccessoryIcon'
 import { Params } from '../../utils/interfaces'
+import { getStatusBarHeight } from 'react-native-iphone-x-helper'
 
 export function CardDetails () {
   const navigation = useNavigation()
   const route = useRoute()
+  const scrollY = useSharedValue(0)
+
+  const scrollHandler = useAnimatedScrollHandler( event => {
+    scrollY.value = event.contentOffset.y
+  } )
+
+  const headerStyleAnimation = useAnimatedStyle( () => {
+    return {
+      height: interpolate(
+        scrollY.value,
+        [0, 200],
+        [200, 70],
+        Extrapolate.CLAMP
+      )
+    }
+  } )
 
   const { car } = route.params as Params
 
@@ -46,17 +70,28 @@ export function CardDetails () {
         translucent
         backgroundColor={'transparent'}
       /> 
-      <Header>
-        <BackButton onPress={handleBack}/>
-      </Header>
+      <Animated.View
+        style={[headerStyleAnimation]}
+      >
+        <Header>
+          <BackButton onPress={handleBack}/>
+        </Header>
 
-      <CarImageWarapper>
-        <ImageSlider 
-          imageUrl={car.photos}
-        />
-      </CarImageWarapper>
+        <CarImageWarapper>
+          <ImageSlider 
+            imageUrl={car.photos}
+          />
+        </CarImageWarapper>
+      </Animated.View>
 
-      <Content>
+      <Animated.ScrollView
+        contentContainerStyle={ {
+          paddingHorizontal: 24,
+          paddingTop: getStatusBarHeight()
+        } }
+        showsVerticalScrollIndicator={false}
+        onScroll={scrollHandler}
+      >
         <Details>
           <Description>
             <Brand>{car.brand}</Brand>
@@ -83,7 +118,7 @@ export function CardDetails () {
 
         <About>{car.about}</About>
 
-      </Content>
+      </Animated.ScrollView>
       <Footer>
           <Button title={'Escolher período do aluguel'} onPress={handleConfirmRental}/>
       </Footer>
