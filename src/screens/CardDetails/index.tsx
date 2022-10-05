@@ -124,10 +124,17 @@ export function CardDetails () {
         </Accessories>
 
         <About>{car.about}</About>
-        <About>{car.about}</About>
-        <About>{car.about}</About>
-        <About>{car.about}</About>
-        <About>{car.about}</About>
+        <About>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. {'\n'}
+          Fusce consectetur dictum nibh. Curabitur pharetra molestie lorem sed pretium. {'\n'}
+          Quisque magna lectus, volutpat quis posuere et, laoreet eu erat.{'\n'}
+          Quisque hendrerit tellus eu augue hendrerit viverra. {'\n'}
+          Nam dignissim dapibus accumsan. Phasellus ac tempor massa. {'\n'} 
+          Nam nec tellus auctor metus bibendum cursus ut et nunc. Aenean eu mauris velit. {'\n'}
+          Morbi ac vehicula risus. Mauris eu est sit amet diam dapibus laoreet. {'\n'}
+          Pellentesque habitant morbi tristique senectus et netus et malesuada {'\n'}
+          fames ac turpis egestas.
+        </About>
 
       </Content>
       <Footer>
