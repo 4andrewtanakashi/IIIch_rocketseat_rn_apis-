@@ -23,7 +23,8 @@ import {
   Price,
   About,
   Accessories,
-  Footer
+  Footer,
+  HeaderWrapper
 } from './styles'
 import { BackButton } from '../../components/BackButton'
 import { ImageSlider } from '../../components/ImageSlider/'
@@ -53,6 +54,17 @@ export function CardDetails () {
     }
   } )
 
+  const sliderCarsStyleAnimation = useAnimatedStyle( () => {
+    return {
+      opacity: interpolate(
+        scrollY.value,
+        [0, 150],
+        [1, 0],
+        Extrapolate.CLAMP
+      )
+    }
+  } )
+
   const { car } = route.params as Params
 
   function handleConfirmRental () {
@@ -70,26 +82,21 @@ export function CardDetails () {
         translucent
         backgroundColor={'transparent'}
       /> 
-      <Animated.View
+      <HeaderWrapper
         style={[headerStyleAnimation]}
       >
         <Header>
           <BackButton onPress={handleBack}/>
         </Header>
 
-        <CarImageWarapper>
+        <CarImageWarapper style={sliderCarsStyleAnimation} >
           <ImageSlider 
             imageUrl={car.photos}
           />
         </CarImageWarapper>
-      </Animated.View>
+      </HeaderWrapper>
 
-      <Animated.ScrollView
-        contentContainerStyle={ {
-          paddingHorizontal: 24,
-          paddingTop: getStatusBarHeight()
-        } }
-        showsVerticalScrollIndicator={false}
+      <Content
         onScroll={scrollHandler}
       >
         <Details>
@@ -117,8 +124,12 @@ export function CardDetails () {
         </Accessories>
 
         <About>{car.about}</About>
+        <About>{car.about}</About>
+        <About>{car.about}</About>
+        <About>{car.about}</About>
+        <About>{car.about}</About>
 
-      </Animated.ScrollView>
+      </Content>
       <Footer>
           <Button title={'Escolher período do aluguel'} onPress={handleConfirmRental}/>
       </Footer>
