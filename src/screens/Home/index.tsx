@@ -24,7 +24,7 @@ import {
   MyCarsButtonWrapper
  } from './styles'
 import { Car } from '../../components/Car'
-import { Load } from '../../components/Load'
+import { LoadingAnimation } from '../../components/LoadingAnimation'
 import { CarDTO } from '../../dtos/CarDTO'
 
 export function Home() {
@@ -109,7 +109,7 @@ export function Home() {
           </HeaderContent>
         </Header>
         {
-          isLoading? <Load />
+          isLoading? <LoadingAnimation />
           :
           <CarList
             data={cars}

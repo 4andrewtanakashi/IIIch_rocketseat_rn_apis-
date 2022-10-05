@@ -8,6 +8,7 @@ import  { CarDTO } from '../../dtos/CarDTO'
 import { api } from '../../services/api'
 import { BackButton } from '../../components/BackButton'
 import { Car } from '../../components/Car'
+import { LoadingAnimation } from '../../components/LoadingAnimation'
 import {
   Container,
   Header,
@@ -75,36 +76,41 @@ export function MyCars () {
         <SubTitle>Conforto, segurança e praticidade.</SubTitle>
       </Header>
 
-      <Content>
-        <Appointments>
-          <AppointmentsTitle>Agendamentos feitos</AppointmentsTitle>
-          <AppointmentsQuality>05</AppointmentsQuality>
-        </Appointments>
+      {
+        loading? 
+        <LoadingAnimation />
+        :
+        <Content>
+          <Appointments>
+            <AppointmentsTitle>Agendamentos feitos</AppointmentsTitle>
+            <AppointmentsQuality>05</AppointmentsQuality>
+          </Appointments>
 
-        <FlatList 
-          data={cars}
-          keyExtractor={item => item.id}
-          showsVerticalScrollIndicator={false}
-          renderItem={ ({item}) => (
-            <CarWrapper>
-              <Car data={item.car} />
-              <CarFooter>
-                <CarFooterTitle>Período</CarFooterTitle>
-                <CarFooterPeriod>
-                  <CarFooterDate>18/06/2021</CarFooterDate>
-                  <AntDesign
-                    name={'arrowright'}
-                    size={20}
-                    color={theme.colors.title}
-                    style={ { marginHorizontal: 10} }
-                  />
-                  <CarFooterDate>20/06/2021</CarFooterDate>
-                </CarFooterPeriod>
-              </CarFooter>
-            </CarWrapper>
-          ) }
-        />
-      </Content>
+          <FlatList 
+            data={cars}
+            keyExtractor={item => item.id}
+            showsVerticalScrollIndicator={false}
+            renderItem={ ({item}) => (
+              <CarWrapper>
+                <Car data={item.car} />
+                <CarFooter>
+                  <CarFooterTitle>Período</CarFooterTitle>
+                  <CarFooterPeriod>
+                    <CarFooterDate>18/06/2021</CarFooterDate>
+                    <AntDesign
+                      name={'arrowright'}
+                      size={20}
+                      color={theme.colors.title}
+                      style={ { marginHorizontal: 10} }
+                    />
+                    <CarFooterDate>20/06/2021</CarFooterDate>
+                  </CarFooterPeriod>
+                </CarFooter>
+              </CarWrapper>
+            ) }
+          />
+        </Content>
+      }
     </Container>
   )
 }
